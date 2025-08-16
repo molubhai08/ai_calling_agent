@@ -1,9 +1,8 @@
 Flask
-Flask-Cors
+flask-cors
 python-dotenv
-supabase
 apscheduler
 pytz
 groq
-smtplib  # (part of Python stdlib, no need to install)
-jsonlib  # (optional, since `json` is stdlib, remove if not used)
+supabase
+
