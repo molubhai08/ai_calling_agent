@@ -27,7 +27,7 @@ CORS(app)
 api = os.environ["GROQ_API_KEY"]
 # Initialize ReminderExtractor
 extractor = ReminderExtractor(api_key=api)
-
+IST = pytz.timezone('Asia/Kolkata')
 # Initialize Supabase
 
 SUPABASE_URL = os.environ["SUPABASE_URL"]
@@ -45,7 +45,7 @@ def set_reminder():
         if not reminder_text:
             return jsonify({"error": "Missing reminder_text"}), 400
 
-        current_time = datetime.now()
+        current_time = datetime.now(IST)
         result = extractor.extract(reminder_text, current_time)
 
         # Prepare data for Supabase
@@ -139,3 +139,4 @@ def load_reminders():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
+
